@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <meta name="description" content="St. Andrews Global: Nurturing the Global Elite through traditional excellence and modern innovation.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?q=80&w=1200">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>St. Andrews Global | Premium Preparatory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --brand-dark: #064e3b; --brand-gold: #fbbf24; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        .nav-link { position: relative; transition: all 0.3s; }
+        .nav-link::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background: var(--brand-gold); transition: 0.3s; }
+        .nav-link:hover::after { width: 100%; }
+    </style>
+</head>
+</script>
+<body class="bg-slate-50 text-slate-900">
+
+    <div class="bg-[#042f2e] text-white py-2 px-6">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div class="hidden sm:flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase">
+            <i data-lucide="phone" class="w-3 h-3 text-emerald-400"></i> 
+            <span>+1.800.ST.ANDREWS</span>
+        </div>
+        
+        <div class="hidden lg:flex items-center gap-2 text-[10px] font-bold tracking-[0.2em] uppercase border-l border-white/10 pl-6 ml-6">
+            <i data-lucide="map-pin" class="w-3 h-3 text-emerald-400"></i> 
+            <span>500 Ivy Lane, New York</span>
+        </div>
+
+        <div class="flex gap-4 ml-auto sm:ml-0 text-[10px] font-bold tracking-[0.2em] uppercase">
+            <a href="javascript:void(0)" onclick="openPortal('parent')" class="hover:text-emerald-400 transition">Parent Portal</a>
+            <span class="opacity-30">|</span>
+            <a href="javascript:void(0)" onclick="openPortal('staff')" class="hover:text-emerald-400 transition">Staff Login</a>
+        </div>
+    </div>
+</div>
+    <nav class="bg-white border-b sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-6 flex justify-between h-24 items-center">
+        <a href="index.html" class="flex items-center gap-4">
+            <div class="bg-emerald-900 p-2 rounded-xl"><i data-lucide="award" class="text-amber-400 w-8 h-8"></i></div>
+            <div>
+                <h1 class="text-2xl font-extrabold tracking-tighter text-emerald-950 uppercase leading-none">St. Andrews</h1>
+                <p class="text-[9px] uppercase tracking-[0.3em] font-bold text-emerald-600">Global Preparatory</p>
+            </div>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-10 text-[11px] font-extrabold uppercase tracking-widest text-slate-600">
+            <a href="index.html" class="nav-link text-emerald-900">Excellence</a>
+            <a href="admission.html" class="nav-link">Admissions</a>
+            <a href="gallery.html" class="nav-link">Campus Life</a>
+            <a href="contact.html" class="nav-link">Connect</a>
+            <a href="admission.html" class="bg-emerald-900 text-white px-8 py-4 rounded-full hover:bg-emerald-800 transition shadow-lg">Inquire</a>
+        </div>
+
+        <button id="mobileMenuBtn" class="lg:hidden text-emerald-900 p-2">
+            <i data-lucide="menu" id="menuIcon" class="w-8 h-8"></i>
+        </button>
+    </div>
+
+    <div id="mobileOverlay" class="fixed inset-0 bg-emerald-950 z-[60] flex flex-col items-center justify-center gap-8 translate-x-full transition-transform duration-500 lg:hidden">
+        <button id="closeMenuBtn" class="absolute top-8 right-8 text-white">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        
+        <a href="index.html" class="text-white text-3xl serif italic hover:text-amber-400 transition">Excellence</a>
+        <a href="admission.html" class="text-white text-3xl serif italic hover:text-amber-400 transition">Admissions</a>
+        <a href="gallery.html" class="text-white text-3xl serif italic hover:text-amber-400 transition">Campus Life</a>
+        <a href="contact.html" class="text-white text-3xl serif italic hover:text-amber-400 transition">Connect</a>
+        
+        <div class="mt-8 pt-8 border-t border-white/10 w-48 text-center">
+            <p class="text-amber-400 text-[10px] uppercase tracking-widest font-bold mb-4">Portals</p>
+            <div class="flex flex-col gap-4">
+                <a href="javascript:void(0)" onclick="openPortal('parent')" class="text-emerald-200 text-sm font-bold uppercase tracking-widest">Parent Portal</a>
+                <a href="javascript:void(0)" onclick="openPortal('staff')" class="text-emerald-200 text-sm font-bold uppercase tracking-widest">Staff Login</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <header class="relative h-[80vh] flex items-center bg-emerald-950 overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1541339907198-e08756ebafe3?q=80&w=2000&auto=format&fit=crop" 
+             class="absolute inset-0 w-full h-full object-cover opacity-50" alt="Main Building">
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/90 to-transparent"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6">
+            <p class="text-amber-400 font-bold uppercase tracking-[0.5em] text-xs mb-6">Founded on Tradition</p>
+            <h2 class="serif text-6xl md:text-8xl text-white leading-tight mb-8">Nurturing the <br><span class="italic text-amber-400">Global Elite.</span></h2>
+            <div class="flex gap-4">
+                <a href="admission.html" class="bg-amber-500 hover:bg-amber-400 text-emerald-950 px-10 py-5 rounded-full font-bold transition shadow-2xl">Start Application</a>
+                <a href="gallery.html" class="bg-white/10 backdrop-blur-md border border-white/20 text-white px-10 py-5 rounded-full font-bold hover:bg-white hover:text-emerald-950 transition">The Campus</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="bg-white py-16 border-b">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+            <div><p class="text-4xl font-black text-emerald-900">#1</p><p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">State Ranking</p></div>
+            <div><p class="text-4xl font-black text-emerald-900">100%</p><p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">University Placement</p></div>
+            <div><p class="text-4xl font-black text-emerald-900">8:1</p><p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Class Ratio</p></div>
+            <div><p class="text-4xl font-black text-emerald-900">24</p><p class="text-[10px] uppercase tracking-widest font-bold text-slate-400">Athletic Titles</p></div>
+        </div>
+    </div>
+
+    <div id="loginModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 backdrop-blur-xl bg-emerald-950/40">
+        <div class="bg-white w-full max-w-md rounded-[2.5rem] shadow-2xl overflow-hidden">
+            <div class="bg-emerald-900 p-10 text-center">
+                <div class="bg-amber-400 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-xl">
+                    <i data-lucide="lock" class="text-emerald-900"></i>
+                </div>
+                <h3 id="modalTitle" class="serif text-3xl text-white">Staff Login</h3>
+                <p id="modalSub" class="text-emerald-300 text-sm mt-2">Secure access for authorized personnel</p>
+            </div>
+            <form id="portalForm" class="p-10 space-y-4">
+                <input type="text" placeholder="Access Identifier" required class="w-full px-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500">
+                <input type="password" placeholder="Passcode" required class="w-full px-6 py-4 bg-slate-50 border rounded-2xl outline-none focus:ring-2 focus:ring-emerald-500">
+                <button type="submit" class="w-full bg-emerald-900 text-white py-5 rounded-2xl font-bold uppercase tracking-widest shadow-xl hover:bg-emerald-800 transition">Authorize Session</button>
+                <button type="button" onclick="closeModal()" class="w-full text-slate-400 text-xs font-bold uppercase py-2">Return to Site</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <section id="payment-portal" class="py-24 bg-white relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.03] pointer-events-none" style="background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            
+            <div>
+                <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-full mb-6">
+                    <i data-lucide="lock" class="w-4 h-4"></i>
+                    <span class="text-[10px] font-bold uppercase tracking-widest">AES-256 Bit Encryption Active</span>
+                </div>
+                <h2 class="serif text-5xl text-emerald-950 mb-6 leading-tight">Secure Tuition <br><span class="italic text-amber-500">Gateway.</span></h2>
+                <p class="text-slate-500 leading-relaxed mb-10 max-w-md">
+                    Authorized by the St. Andrews Bursar Office. Your connection to this server is private and encrypted. 
+                </p>
+                
+                <div class="flex gap-8 items-center">
+                    <div class="text-center">
+                        <div class="bg-slate-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-2 mx-auto border border-slate-100">
+                            <i data-lucide="shield-check" class="text-emerald-900 w-8 h-8"></i>
+                        </div>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">PCI Compliant</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-slate-50 w-16 h-16 rounded-2xl flex items-center justify-center mb-2 mx-auto border border-slate-100">
+                            <i data-lucide="cpu" class="text-emerald-900 w-8 h-8"></i>
+                        </div>
+                        <p class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">Auto-Settle</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-emerald-600 rounded-[2.6rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                
+                <div class="relative bg-white border border-slate-100 rounded-[2.5rem] shadow-2xl overflow-hidden">
+                    <div id="security-status" class="bg-emerald-900 px-8 py-3 flex justify-between items-center text-white/70 text-[10px] font-bold tracking-[0.2em] uppercase">
+                        <span class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                            Secure Connection
+                        </span>
+                        <span id="session-timer">Session: 10:00</span>
+                    </div>
+
+                    <form id="paymentForm" class="p-8 space-y-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] uppercase font-extrabold text-emerald-900">Payment Allocation</label>
+                            <select id="feeType" class="w-full bg-slate-50 border border-slate-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-amber-400 font-semibold">
+                                <option value="500">Registration — $500.00</option>
+                                <option value="12500">Tuition — $12,500.00</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <input type="text" placeholder="Card Number" maxlength="19" required 
+                                    class="w-full bg-slate-50 border border-slate-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-amber-400">
+                                <div class="absolute right-5 top-4 flex gap-2">
+                                    <i data-lucide="credit-card" class="text-slate-300 w-5 h-5"></i>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" placeholder="MM/YY" maxlength="5" required class="bg-slate-50 border border-slate-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-amber-400">
+                                <input type="password" placeholder="CVC" maxlength="3" required class="bg-slate-50 border border-slate-100 rounded-2xl px-5 py-4 outline-none focus:ring-2 focus:ring-amber-400">
+                            </div>
+                        </div>
+
+                        <button type="submit" id="payBtn" class="w-full bg-emerald-900 text-amber-400 font-black py-5 rounded-2xl hover:bg-emerald-800 transition-all shadow-xl uppercase tracking-[0.2em] text-xs">
+                            Authorize Secure Payment
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</section>
+    <footer class="bg-[#042f2e] text-white pt-24 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-16 border-b border-white/10 pb-16 mb-12">
+            
+            <div class="col-span-1 md:col-span-1">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="bg-amber-400 p-2 rounded-lg">
+                        <i data-lucide="award" class="text-emerald-900 w-6 h-6"></i>
+                    </div>
+                    <span class="text-2xl font-black tracking-tighter uppercase">St. Andrews</span>
+                </div>
+                <p class="text-emerald-200/60 text-sm leading-relaxed mb-8">
+                    An elite academic community dedicated to the pursuit of excellence and the cultivation of global leadership since 1995.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-amber-400 hover:text-emerald-900 transition-all duration-300">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#" class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-amber-400 hover:text-emerald-900 transition-all duration-300">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-amber-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-8">Institutional</h4>
+                <ul class="space-y-4 text-sm text-emerald-100/70 font-medium">
+                    <li><a href="index.html" class="hover:text-amber-400 transition">Our Excellence</a></li>
+                    <li><a href="admission.html" class="hover:text-amber-400 transition">Admissions Process</a></li>
+                    <li><a href="gallery.html" class="hover:text-amber-400 transition">Campus Facilities</a></li>
+                    <li><a href="contact.html" class="hover:text-amber-400 transition">Public Relations</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-amber-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-8">Portals</h4>
+                <ul class="space-y-4 text-sm text-emerald-100/70 font-medium">
+                    <li><a href="javascript:void(0)" onclick="openPortal('parent')" class="hover:text-amber-400 transition">Parent Gateway</a></li>
+                    <li><a href="javascript:void(0)" onclick="openPortal('staff')" class="hover:text-amber-400 transition">Faculty Access</a></li>
+                    <li><a href="#" class="hover:text-amber-400 transition">Student Webmail</a></li>
+                    <li><a href="#" class="hover:text-amber-400 transition">Alumni Network</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-amber-400 font-bold uppercase tracking-[0.2em] text-[10px] mb-8">The Campus</h4>
+                <div class="space-y-6 text-sm text-emerald-100/70">
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="map-pin" class="w-5 h-5 text-amber-400 shrink-0"></i>
+                        <p>500 Ivy Lane, Private Estate<br>New York, NY 10021</p>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <i data-lucide="mail" class="w-5 h-5 text-amber-400 shrink-0"></i>
+                        <p>registrar@standrews.edu</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-emerald-100/30">
+                &copy; 2026 St. Andrews Global Preparatory. All Rights Reserved.
+            </p>
+            <div class="flex gap-8 text-[10px] uppercase tracking-[0.2em] text-emerald-100/30">
+                <a href="privacy.html">Privacy Policy</a>.
+                <a href="terms.html">Terms of Service</a>.
+            </div>
+        </div>
+    </footer>
+    <script>lucide.createIcons();</script>
+    <script type="text/javascript">
+<script type="text/javascript">
+    
+    <script src="script.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
