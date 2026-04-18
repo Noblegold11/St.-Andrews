@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registry Dashboard | St. Andrews Global</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Plus Jakarta Sans', sans-serif; }</style>
+</head>
+<body class="bg-slate-50 min-h-screen">
+    <nav class="bg-[#042f2e] text-white p-6 flex justify-between items-center shadow-lg sticky top-0 z-50">
+        <h2 class="font-bold flex items-center gap-2 tracking-widest text-xs uppercase">
+            <i data-lucide="shield-check" class="text-amber-400 w-5 h-5"></i> 
+            Staff Administrative Registry
+        </h2>
+        <a href="index.html" class="text-[10px] font-black tracking-widest bg-white/10 px-4 py-2 rounded-lg hover:bg-white/20 transition">LOGOUT</a>
+    </nav>
+
+    <div class="max-w-6xl mx-auto p-6 md:p-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+            <div>
+                <p class="text-emerald-600 text-[10px] font-black uppercase tracking-[0.3em] mb-2">Admissions Office</p>
+                <h1 class="text-4xl font-black text-emerald-950">Student Inquiries</h1>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="renderInquiries()" class="text-[10px] font-bold text-emerald-700 uppercase tracking-widest border border-emerald-200 px-4 py-2 rounded-lg hover:bg-emerald-50 transition">Refresh List</button>
+                <button onclick="clearRegistry()" class="text-[10px] font-bold text-red-400 hover:text-red-600 uppercase tracking-widest px-4 py-2">Clear All Records</button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-slate-100">
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead class="bg-slate-50 border-b border-slate-100">
+                        <tr>
+                            <th class="p-6 text-[10px] uppercase font-black text-slate-400 tracking-widest">Applicant</th>
+                            <th class="p-6 text-[10px] uppercase font-black text-slate-400 tracking-widest">Grade</th>
+                            <th class="p-6 text-[10px] uppercase font-black text-slate-400 tracking-widest">Guardian Email</th>
+                            <th class="p-6 text-[10px] uppercase font-black text-slate-400 tracking-widest text-center">Actions</th>
+                            <th class="p-6 text-[10px] uppercase font-black text-slate-400 tracking-widest text-right">Date Received</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminList" class="divide-y divide-slate-50"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'school_applications';
+
+        function renderInquiries() {
+            const list = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            const container = document.getElementById('adminList');
+            
+            if(list.length === 0) {
+                container.innerHTML = `<tr><td colspan="5" class="p-32 text-center text-slate-400 italic">No dossiers found.</td></tr>`;
+            } else {
+                container.innerHTML = '';
+                [...list].reverse().forEach((item, index) => {
+                    const realIndex = list.length - 1 - index;
+                    const isApproved = item.status === 'Approved';
+
+                    container.innerHTML += `
+                        <tr class="hover:bg-emerald-50/30 transition-colors group">
+                            <td class="p-6">
+                                <div class="font-extrabold text-emerald-950">${item.studentName || 'N/A'}</div>
+                                <span class="${isApproved ? 'bg-blue-100 text-blue-700' : 'bg-emerald-100 text-emerald-700'} px-2 py-0.5 rounded text-[9px] font-black uppercase tracking-tighter">
+                                    ${item.status || 'New Inquiry'}
+                                </span>
+                            </td>
+                            <td class="p-6 text-slate-600 text-sm font-medium">${item.grade || 'General'}</td>
+                            <td class="p-6 text-slate-500 text-sm font-mono">${item.parentEmail || '—'}</td>
+                            <td class="p-6 text-center flex justify-center gap-2">
+                                ${!isApproved ? `
+                                    <button onclick="approveRecord(${realIndex})" class="p-2 text-emerald-600 hover:bg-emerald-100 rounded-lg transition">
+                                        <i data-lucide="check-circle" class="w-5 h-5"></i>
+                                    </button>
+                                ` : ''}
+                                <button onclick="deleteRecord(${realIndex})" class="p-2 text-slate-300 hover:text-red-500 transition">
+                                    <i data-lucide="trash-2" class="w-4 h-4"></i>
+                                </button>
+                            </td>
+                            <td class="p-6 text-[10px] font-bold text-slate-400 uppercase tabular-nums text-right">
+                                ${item.timestamp || 'Recent'}
+                            </td>
+                        </tr>`;
+                });
+            }
+            lucide.createIcons();
+        }
+
+        function approveRecord(index) {
+            let list = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+            list[index].status = 'Approved';
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+            renderInquiries();
+        }
+
+        function deleteRecord(index) {
+            if(confirm("Permanently remove this inquiry?")) {
+                let list = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+                list.splice(index, 1);
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+                renderInquiries();
+            }
+        }
+
+        function clearRegistry() {
+            if(confirm("Wipe all admission records?")) {
+                localStorage.removeItem(STORAGE_KEY);
+                renderInquiries();
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', renderInquiries);
+    </script>
+</body>
+</html>

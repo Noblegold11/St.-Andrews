@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | St. Andrews Global</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .serif { font-family: 'Playfair Display', serif; }
+        @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+        .animate-spin-custom { animation: spin 1s linear infinite; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <nav class="bg-white border-b sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between h-20 items-center">
+            <a href="index.html" class="flex items-center gap-3">
+                <div class="bg-emerald-900 p-1.5 rounded-lg"><i data-lucide="award" class="text-amber-400 w-6 h-6"></i></div>
+                <span class="text-xl font-extrabold tracking-tighter text-emerald-950 uppercase">St. Andrews</span>
+            </a>
+            <div class="hidden lg:flex items-center gap-8 text-[10px] font-extrabold uppercase tracking-widest text-slate-500">
+                <a href="index.html" class="hover:text-emerald-900 transition">Excellence</a>
+                <a href="admission.html" class="text-emerald-900 border-b-2 border-amber-400 pb-1">Admissions</a>
+                <a href="gallery.html" class="hover:text-emerald-900 transition">Campus Life</a>
+                <a href="contact.html" class="hover:text-emerald-900 transition">Connect</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bg-emerald-950 py-20 text-center relative overflow-hidden">
+        <div class="relative z-10">
+            <h1 class="serif text-5xl text-white mb-4">Admissions <span class="italic text-amber-400">&</span> Enrollment</h1>
+            <p class="text-emerald-300 uppercase tracking-[0.3em] text-xs font-bold">The journey to excellence begins here</p>
+        </div>
+    </section>
+
+    <main class="max-w-4xl mx-auto -mt-12 px-6 pb-24 relative z-20">
+        <div class="bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-16 border border-slate-100">
+            <form id="admissionForm" class="space-y-8">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest font-extrabold text-emerald-900">Student Full Name</label>
+                        <input type="text" id="studentName" required placeholder="John Doe" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-amber-400 outline-none transition">
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] uppercase tracking-widest font-extrabold text-emerald-900">Target Grade Level</label>
+                        <select id="grade" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-amber-400 outline-none transition">
+                            <option value="Kindergarten">Kindergarten</option>
+                            <option value="Primary Years">Primary Years (Grades 1-5)</option>
+                            <option value="Middle School">Middle School (Grades 6-8)</option>
+                            <option value="Senior Preparatory">Senior Preparatory (Grades 9-12)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="space-y-2 relative">
+                    <label class="text-[10px] uppercase tracking-widest font-extrabold text-emerald-900">Parent/Guardian Email</label>
+                    <div class="relative">
+                        <input type="email" id="parentEmail" required placeholder="guardian@example.com" class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-amber-400 outline-none transition pr-12">
+                        <div id="emailCheck" class="absolute right-4 top-1/2 -translate-y-1/2 text-emerald-500 opacity-0 transition-opacity duration-300">
+                            <i data-lucide="check-circle-2" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label class="text-[10px] uppercase tracking-widest font-extrabold text-emerald-900">Additional Information</label>
+                    <textarea id="notes" rows="4" placeholder="Tell us about your child's interests..." class="w-full bg-slate-50 border-none rounded-2xl px-6 py-4 focus:ring-2 focus:ring-amber-400 outline-none transition"></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-emerald-900 text-amber-400 font-extrabold py-5 rounded-2xl hover:bg-emerald-800 transition shadow-xl uppercase tracking-widest text-sm flex items-center justify-center gap-3">
+                    <span id="btnText">Submit Formal Inquiry</span>
+                    <div id="btnLoader" class="hidden">
+                        <i data-lucide="loader-2" class="w-5 h-5 animate-spin-custom"></i>
+                    </div>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="bg-[#042f2e] text-white py-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <p class="text-[10px] uppercase tracking-[0.2em] text-emerald-100/30">
+                &copy; 2026 St. Andrews Global Preparatory. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <div id="admissionSuccess" class="fixed inset-0 z-[100] hidden items-center justify-center bg-emerald-950/90 backdrop-blur-md p-6">
+        <div class="bg-white rounded-[3rem] max-w-lg w-full p-12 text-center shadow-2xl">
+            <div class="w-20 h-20 bg-amber-400 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
+                <i data-lucide="check" class="text-emerald-900 w-10 h-10"></i>
+            </div>
+            <h2 class="serif text-4xl text-emerald-900 mb-4">Application Received.</h2>
+            <p class="text-slate-500 mb-8 leading-relaxed">The Board of Admissions has received your dossier. A formal evaluation will begin shortly.</p>
+            <button onclick="window.location.href='index.html'" class="w-full bg-emerald-900 text-white py-5 rounded-2xl font-bold uppercase tracking-widest">Return to Home</button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        const form = document.getElementById('admissionForm');
+        const modal = document.getElementById('admissionSuccess');
+        const emailInput = document.getElementById('parentEmail');
+        const emailCheck = document.getElementById('emailCheck');
+        const submitBtn = document.getElementById('submitBtn');
+        const btnText = document.getElementById('btnText');
+        const btnLoader = document.getElementById('btnLoader');
+
+        emailInput.addEventListener('input', function() {
+            const isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.value);
+            emailCheck.style.opacity = isValid ? "1" : "0";
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            btnText.innerText = "Processing Dossier...";
+            btnLoader.classList.remove('hidden');
+
+            const newInquiry = {
+                studentName: document.getElementById('studentName').value,
+                grade: document.getElementById('grade').value,
+                parentEmail: emailInput.value,
+                notes: document.getElementById('notes').value,
+                status: 'New Inquiry',
+                timestamp: new Date().toLocaleString()
+            };
+
+            setTimeout(() => {
+                const existingRecords = JSON.parse(localStorage.getItem('school_applications') || '[]');
+                existingRecords.push(newInquiry);
+                localStorage.setItem('school_applications', JSON.stringify(existingRecords));
+
+                modal.classList.replace('hidden', 'flex');
+                
+                submitBtn.disabled = false;
+                btnText.innerText = "Submit Formal Inquiry";
+                btnLoader.classList.add('hidden');
+                form.reset();
+                emailCheck.style.opacity = "0";
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
